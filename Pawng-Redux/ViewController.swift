@@ -361,6 +361,16 @@ class ViewController: UIViewController {
     
     func launchFromPoint(point: CGPoint) {
         
+        var point = point
+        if (point.x == 0){
+            point = CGPoint(x: 1, y: point.y)
+        }
+        if (point.y == 0){
+            point = CGPoint(x: point.x, y: 1)
+        }
+        
+        
+        
         var velocityVector = CGPointMake( max(50, point.x)*point.x/abs(point.x)/300, max(25, point.y)*point.y/abs(point.y)/300)
         
         pusher = UIPushBehavior(items: [square], mode: UIPushBehaviorMode.Instantaneous)
